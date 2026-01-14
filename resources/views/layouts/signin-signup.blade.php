@@ -35,15 +35,16 @@
                     </div>
                     <hr>
                     <h3 class="h6 font-weight-semibold opacity-70 pt-4 pb-2">Or using form below</h3>
-                    <form class="needs-validation" novalidate="">
+                    <form class="needs-validation" novalidate="" action="{{ route('account.login') }}" method="POST">
+                        @csrf
                         <div class="input-group form-group">
                             <div class="input-group-prepend"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span></div>
-                            <input class="form-control" type="email" placeholder="Email" required="">
-                            <div class="invalid-feedback">Please enter valid email address!</div>
+                            <input class="form-control" type="text" name="login" placeholder="Username/Email" required="">
+                            <div class="invalid-feedback">Please enter valid username/email address!</div>
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span></div>
-                            <input class="form-control" type="password" placeholder="Password" required="">
+                            <input class="form-control" type="password" name="password" placeholder="Password" required="">
                             <div class="invalid-feedback">Please enter valid password!</div>
                         </div>
                         <div class="d-flex flex-wrap justify-content-between">
@@ -63,47 +64,48 @@
         <div class="col-md-6 pt-5 pt-sm-3">
             <h2 class="h4 mb-3">No account? Sign up</h2>
             <p class="text-muted mb-4">Registration takes less than a minute but gives you full control over your orders.</p>
-            <form class="needs-validation" novalidate="">
+            <form class="needs-validation" novalidate="" action="{{ route('account.register') }}"  method="POST">
+                @csrf
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="reg-fn">First Name</label>
-                            <input class="form-control" type="text" required="" id="reg-fn">
-                            <div class="invalid-feedback">Please enter your first name!</div>
+                            <label for="reg-fn">Name</label>
+                            <input class="form-control" type="text" name="name" required id="reg-fn">
+                            <div class="invalid-feedback">Please enter your Name!</div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="reg-ln">Last Name</label>
-                            <input class="form-control" type="text" required="" id="reg-ln">
-                            <div class="invalid-feedback">Please enter your last name!</div>
+                            <label for="reg-ln">Department</label>
+                            <input class="form-control" type="text" name="department" required id="reg-ln">
+                            <div class="invalid-feedback">Please enter your department!</div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="reg-email">E-mail Address</label>
-                            <input class="form-control" type="email" required="" id="reg-email">
+                            <input class="form-control" type="email" name="email" required id="reg-email">
                             <div class="invalid-feedback">Please enter valid email address!</div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="reg-phone">Phone Number</label>
-                            <input class="form-control" type="text" required="" id="reg-phone">
+                            <input class="form-control" type="text" name="number" required id="reg-phone">
                             <div class="invalid-feedback">Please enter your phone number!</div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="reg-password">Password</label>
-                            <input class="form-control" type="password" required="" id="reg-password">
+                            <input class="form-control" type="password" name="password" required id="reg-password">
                             <div class="invalid-feedback">Please enter password!</div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="reg-password-confirm">Confirm Password</label>
-                            <input class="form-control" type="password" required="" id="reg-password-confirm">
+                            <input class="form-control" type="password" id="reg-password-confirm">
                             <div class="invalid-feedback">Passwords do not match!</div>
                         </div>
                     </div>
