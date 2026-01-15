@@ -64,4 +64,12 @@ class AuthController extends Controller
         }
 
     }
+
+    public function dash(){
+
+        $user = auth()->user();
+
+        return view('layouts.index' , compact('user'));
+
+    }
 }
