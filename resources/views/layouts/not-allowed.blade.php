@@ -18,7 +18,7 @@
 <section class="content">
 	<div class="row">
 		<h3>
-            You need to Login or register to raise a ticket
+            Only admins can access this page
         </h3>
         <h4>
             <a href="{{route('account.create')}}"> Login Or Create Account</a>

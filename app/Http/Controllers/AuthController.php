@@ -10,6 +10,9 @@ class AuthController extends Controller
 {
     public function create(){
 
+        if (auth()->user()) {
+            return $this->authentication();
+        }
         // $user = auth()->user();
 
         return view('layouts.signin-signup');
@@ -58,14 +61,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
 
-            $user = auth()->user();
-
-            if ($user->role === 'admin') {
-            return redirect()->route('account.admin')->with('success' , 'Admin Logged In');
-        }
-
-        return redirect()->route('account.user')->with('success' , 'User Logged In');
-        
+            return $this->authentication();
         }
 
         else{
@@ -92,13 +88,18 @@ class AuthController extends Controller
 
     }
 
-    // public function authentication(Request $request , $user){
+    public function authentication(){
 
-    //     if ($user->role === 'admin') {
-    //         return redirect()->route('account.admin')->with('success' , 'Admin Logged In');
-    //     }
+        $user = auth()->user();
 
-    //     return redirect()->route('account.user')->with('success' , 'User Logged In');
+        if ($user->role === 'admin') {
+            return redirect()->route('account.admin')->with('success' , 'Admin Logged In');
+        }
+        else{
+            return redirect()->route('account.user')->with('success' , 'User Logged In');
+        }
 
-    // }
+        
+
+    }
 }
