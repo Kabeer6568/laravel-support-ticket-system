@@ -5,7 +5,8 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 
 
-Route::get('/', [AuthController::class , 'dash'])->middleware('auth')->name('account.index');
+Route::get('/', [AuthController::class , 'userDash'])->middleware(['auth' , 'role:user'])->name('account.user');
+Route::get('/admin', [AuthController::class , 'adminDash'])->middleware(['auth', 'role:admin'])->name('account.admin');
 
 Route::get('/account' , [AuthController::class , 'create'])->name('account.create');
 Route::post('/register' , [AuthController::class , 'register'])->name('account.register');

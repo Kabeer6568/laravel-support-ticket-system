@@ -18,7 +18,7 @@ class AuthController extends Controller
 
     public function register(Request $request){
 
-        $user = $request->validate([
+        $validate = $request->validate([
         
         'name' => 'required|string|max:255',
         'email' => 'required|string|max:255',
@@ -28,11 +28,13 @@ class AuthController extends Controller
 
         ]);
 
-        $user['password'] = bcrypt($user['password']);
+        $validate['password'] = bcrypt($validate['password']);
 
-        User::create($user);
+        $user = User::create($validate);
 
-        return redirect()->route('account.index')->with('sucess' , 'registered');
+        Auth::login($user);
+
+        return redirect()->route('account.user')->with('sucess' , 'registered');
 
     }
 
@@ -55,8 +57,17 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('account.index')->with('sucess' , 'logged In');
+
+            $user = auth()->user();
+
+            if ($user->role === 'admin') {
+            return redirect()->route('account.admin')->with('success' , 'Admin Logged In');
         }
+
+        return redirect()->route('account.user')->with('success' , 'User Logged In');
+        
+        }
+
         else{
             return back()->withError([
                 'login' => 'Username/Email or Password incorrect',
@@ -65,11 +76,29 @@ class AuthController extends Controller
 
     }
 
-    public function dash(){
+    public function userDash(){
 
         $user = auth()->user();
 
         return view('layouts.index' , compact('user'));
 
     }
+    
+    public function adminDash(){
+
+        $user = auth()->user();
+
+        return view('layouts.admin.index' , compact('user'));
+
+    }
+
+    // public function authentication(Request $request , $user){
+
+    //     if ($user->role === 'admin') {
+    //         return redirect()->route('account.admin')->with('success' , 'Admin Logged In');
+    //     }
+
+    //     return redirect()->route('account.user')->with('success' , 'User Logged In');
+
+    // }
 }

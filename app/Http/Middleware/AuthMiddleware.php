@@ -13,11 +13,19 @@ class AuthMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next , ...$roles): Response
     {
-        if(!auth()->check()){
-            return redirect()->route('page.notAllowed')->with('Error' , 'Need to login or register to access this page');
-        }
+        // First check: logged in?
+    if (!auth()->check()) {
+        return redirect()->route('account.create')
+            ->with('error', 'Please login to access this page');
+    }
+    
+    // Second check: has correct role?
+    if (!in_array(auth()->user()->role, $roles)) {
+        return redirect()->route('page.notAllowed')
+            ->with('error', 'You do not have permission to access this page');
+    }
 
         return $next($request);
     }
