@@ -1,31 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Support Tickets</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    
-    @vite(['resources/css/app.css'])
-</head>
-<body>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<!-- Header Start -->
-<header class="custom-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h2 class="logo-text">Support System</h2>
-            </div>
-            <div class="col-md-6 text-right">
-                <a href="#" class="btn btn-primary login-btn">
-                    <i class="fa fa-sign-in"></i> Login
-                </a>
-            </div>
-        </div>
-    </div>
-</header>
-<!-- Header End -->
+@extends('layouts.app')
+
+@section('content')
 
 <div class="container">
     <section class="content">
@@ -353,19 +328,4 @@
     </div>
 </div>
 
-<!-- Footer Start -->
-<footer class="custom-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <p>&copy; 2026 Support System. All rights reserved. | Designed with <i class="fa fa-heart text-danger"></i></p>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- Footer End -->
-
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</body>
-</html>
+@endsection

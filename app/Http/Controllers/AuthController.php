@@ -99,7 +99,7 @@ class AuthController extends Controller
             return redirect()->route('account.user')->with('success' , 'User Logged In');
         }
 
-        
-
     }
+
+    
 }
