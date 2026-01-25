@@ -8,7 +8,23 @@
             </div>
             <div class="col-md-6 text-right">
                 <a href="{{ route('account.create') }}" class="btn btn-primary login-btn">
-                    <i class="fa fa-sign-in"></i> {{ $user->name }}
+                    <i class="fa fa-sign-in"></i> 
+                    @auth
+                    @if(auth()->user()->role === 'admin' || auth()->user()->role === 'user')
+                    {{ auth()->user()->name }}
+                    @endif
+                    @else
+                    Login
+                    @endauth
+                </a>
+                <a href="{{ route('account.logout') }}" class="btn btn-primary login-btn">
+                    <i class="fa fa-sign-in"></i> 
+                    @auth
+                    @if(auth())
+                    Logout
+                    @endif
+                    
+                    @endauth
                 </a>
             </div>
         </div>

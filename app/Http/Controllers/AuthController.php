@@ -101,5 +101,14 @@ class AuthController extends Controller
 
     }
 
-    
+    public function logout(Request $request){
+
+
+        AUTH::logout();
+
+        $request->session()->invalidate();
+
+        return redirect()->route('account.create')-with('sucess' , 'Logged Out');
+
+    }
 }

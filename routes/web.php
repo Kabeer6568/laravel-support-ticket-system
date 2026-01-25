@@ -18,3 +18,5 @@ Route::get('/not-allowed' , function(){
     return view('layouts.not-allowed');
 
 })->name('page.notAllowed');
+
+Route::get('/logout' , [AuthController::class , 'logout'])->name('account.logout');

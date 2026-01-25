@@ -7,7 +7,7 @@
     <title>Sign In and Sign Up Page - Bootdey.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    @vite(['resources/css/app.css'])
+    @vite(['resources/css/app.css' , 'resources/js/app.js'])
     	
     </style>
 </head>
@@ -107,11 +107,12 @@
                             <label for="reg-password-confirm">Confirm Password</label>
                             <input class="form-control" type="password" id="reg-password-confirm">
                             <div class="invalid-feedback">Passwords do not match!</div>
+                            <p id="msg"></p>
                         </div>
                     </div>
                 </div>
                 <div class="text-right">
-                    <button class="btn btn-primary" type="submit">Sign Up</button>
+                    <button class="btn btn-primary" id="submitBtn" type="submit" disabled>Sign Up</button>
                 </div>
             </form>
         </div>
