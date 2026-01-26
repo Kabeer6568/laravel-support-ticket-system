@@ -70,16 +70,17 @@
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 										<h4 class="modal-title"><i class="fa fa-pencil"></i> Create New Issue</h4>
 									</div>
-									<form action="#" method="post">
+									<form action="{{ route( 'ticket.user' ) }}" method="post">
+										@csrf
 										<div class="modal-body">
 											<div class="form-group">
-												<input name="subject" type="text" class="form-control" placeholder="Subject">
+												<input name="subject" type="text" class="form-control" required placeholder="Subject">
 											</div>
 											<div class="form-group">
 												<input name="department" type="text" class="form-control" placeholder="Department">
 											</div>
 											<div class="form-group">
-												<textarea name="message" class="form-control" placeholder="Please detail your issue or question" style="height: 120px;"></textarea>
+												<textarea name="description" class="form-control" required placeholder="Please detail your issue or question" style="height: 120px;"></textarea>
 											</div>
 											<div class="form-group">
 												<input type="file" name="attachment">
