@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -74,9 +75,10 @@ class AuthController extends Controller
 
     public function userDash(){
 
-        $user = auth()->user();
+        $users = auth()->user();
+        $tickets = Ticket::where('user_id' , auth()->id())->get();
 
-        return view('layouts.index' , compact('user'));
+        return view('layouts.index' , compact('users' , 'tickets'));
 
     }
     

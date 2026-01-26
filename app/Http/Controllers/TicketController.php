@@ -36,5 +36,12 @@ class TicketController extends Controller
 
     }
 
+    public function showTicket(){
+
+        $ticket = Ticket::where('user_id' , auth()->id());
+
+
+    }
+
     
 }
