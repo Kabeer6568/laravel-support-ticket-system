@@ -107,7 +107,7 @@
 								@foreach ($tickets as $ticket)
 								
 
-								<li class="list-group-item" data-toggle="modal" data-target="#issue">
+								<li class="list-group-item" data-toggle="modal" data-target="#issue-{{ $ticket->id }}">
 									<div class="media">
 										<i class="fa fa-cog pull-left"></i>
 										<div class="media-body">
@@ -205,7 +205,7 @@
 							
 							<!-- BEGIN DETAIL TICKET -->
 							 @foreach($tickets as $ticket)
-							<div class="modal fade" id="issue" tabindex="-1" role="dialog" aria-labelledby="issue" aria-hidden="true">
+							<div class="modal fade" id="issue-{{ $ticket->id }}" tabindex="-1" role="dialog" aria-labelledby="issue" aria-hidden="true">
 								<div class="modal-wrapper">
 									<div class="modal-dialog">
 										<div class="modal-content">
