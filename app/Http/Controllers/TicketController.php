@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Ticket;
+use App\Models\TicketMessage;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
@@ -38,7 +39,7 @@ class TicketController extends Controller
 
     public function showTicket(){
 
-        $ticket = Ticket::where('user_id' , auth()->id());
+        $ticket = Ticket::where('user_id' , auth()->id())->latest()->get();
 
     }
 

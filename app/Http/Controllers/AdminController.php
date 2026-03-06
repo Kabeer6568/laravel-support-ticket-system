@@ -11,8 +11,10 @@ class AdminController extends Controller
     public function showUsers(){
 
     $users = User::all();
+    $tickets = Ticket::with('user')->latest()->get();
 
-    return view('layouts.admin.index' , compact('users'));
+
+    return view('layouts.admin.index' , compact('users' , 'tickets'));
 
     }
 }
