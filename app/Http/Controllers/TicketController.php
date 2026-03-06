@@ -40,7 +40,6 @@ class TicketController extends Controller
 
         $ticket = Ticket::where('user_id' , auth()->id());
 
-
     }
 
     

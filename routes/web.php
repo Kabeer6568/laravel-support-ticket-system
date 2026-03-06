@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -24,4 +25,5 @@ Route::post('/', [TicketController::class , 'raiseTicket'])->name('ticket.user')
 
 //Admin Route
 
-Route::get('/admin', [AuthController::class , 'adminDash'])->middleware(['role:admin'])->name('account.admin');
+// Route::get('/admin', [AuthController::class , 'adminDash'])->middleware(['role:admin'])->name('account.admin');
+Route::get('/admin', [AdminController::class , 'showUsers'])->middleware(['role:admin'])->name('account.admin');

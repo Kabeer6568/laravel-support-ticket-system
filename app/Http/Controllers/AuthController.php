@@ -95,7 +95,8 @@ class AuthController extends Controller
         $user = auth()->user();
 
         if ($user->role === 'admin') {
-            return redirect()->route('account.admin')->with('success' , 'Admin Logged In');
+            return redirect()->action([AdminController::class, 'showUser'])
+                        ->with('success', 'Admin Logged In');
         }
         else{
             return redirect()->route('account.user')->with('success' , 'User Logged In');

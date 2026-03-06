@@ -30,12 +30,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($users as $user)
                                     <tr>
-                                        <td>John Williams</td>
-                                        <td>jwilliams@example.com</td>
-                                        <td>+1 234 567 8901</td>
-                                        <td>IT Support</td>
-                                        <td><span class="label label-primary">Admin</span></td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->number }}</td>
+                                        <td>{{ $user->department }}</td>
+                                        <td><span class="label {{ $user->role === 'admin' ? 'label-primary' : 'label-success' }}">{{ $user->role }}</span></td>
                                         <td class="text-center">
                                             <button class="btn btn-info btn-xs" title="Edit">
                                                 <i class="fa fa-edit"></i>
@@ -45,6 +46,7 @@
                                             </button>
                                         </td>
                                     </tr>
+                                    @endforeach
                                     <tr>
                                         <td>Lisa Gardner</td>
                                         <td>lgardner@example.com</td>
