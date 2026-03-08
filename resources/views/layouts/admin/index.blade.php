@@ -217,7 +217,7 @@
 												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 												<h4 class="modal-title"><i class="fa fa-cog"></i> Add drag and drop config import closes</h4>
 											</div>
-											<form action="#" method="post">
+											
 												<div class="modal-body">
 													<div class="row">
 														<div class="col-md-2">
@@ -228,21 +228,46 @@
 															<p>{{ $ticket -> description }}</p>
 														</div>
 													</div>
+
+                                                    @foreach($ticket->messages as $message)
+
 													<div class="row support-content-comment">
 														<div class="col-md-2">
 															<img src="assets/img/user/avatar02.png" class="img-circle" alt="" width="50">
 														</div>
+
 														<div class="col-md-10">
-															<p>Posted by <a href="#">ehernandez</a> on 16/06/2014 at 14:12</p>
-															<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+															<p>Posted by <a href="#">{{ $message->user->name }}</a> on 16/06/2014 at 14:12</p>
+															<p>{{ $message->message }}</p>
 															<a href="#"><span class="fa fa-reply"></span> &nbsp;Post a reply</a>
 														</div>
 													</div>
+                                                    @endforeach
+
+                                                    
+
+                                                    {{-- Reply box --}}
+                    @if($ticket->status !== 'closed')
+                    <hr>
+                    <form action="{{ route('ticket.message', $ticket->id) }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <textarea name="message" class="form-control" rows="3" placeholder="Type your reply..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-reply"></i> Send Reply
+                        </button>
+                    </form>
+                    @else
+                    <p class="text-muted text-center"><i class="fa fa-lock"></i> This ticket is closed.</p>
+                    @endif
+
+
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
 												</div>
-											</form>
+											
 										</div>
 									</div>
 								</div>

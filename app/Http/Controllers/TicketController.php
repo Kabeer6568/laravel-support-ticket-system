@@ -43,5 +43,32 @@ class TicketController extends Controller
 
     }
 
+    public function sendMessage(Request $request, $id){
+    $request->validate([
+        'message' => 'required|string|max:1000',
+    ]);
+
+    TicketMessage::create([
+        'ticket_id' => $id,
+        'user_id'   => auth()->id(),
+        'message'   => $request->message,
+    ]);
+
+    $ticket = Ticket::findOrFail($id);
+    $ticket->update([
+        'status' => auth()->user()->role === 'admin' ? 'open' : 'pending'
+    ]);
+
+    return redirect()->back()->with('success', 'Message Sent');
+}
+
+public function updateStatus(Request $request, $id){
+    $request->validate([
+        'status' => 'required|in:pending,open,resolved,closed',
+    ]);
+
+    Ticket::findOrFail($id)->update(['status' => $request->status]);
+    return redirect()->back()->with('success', 'Status Updated');
+}
     
 }

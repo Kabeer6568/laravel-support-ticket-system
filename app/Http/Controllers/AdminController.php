@@ -11,8 +11,8 @@ class AdminController extends Controller
     public function showUsers(){
 
     $users = User::all();
-    $tickets = Ticket::with('user')->latest()->get();
-
+    $tickets = Ticket::with('user' , 'messages.user')->latest()->get();
+    // $messages = Ticket::with('message.user' , 'user')->findOrFail($id);
 
     return view('layouts.admin.index' , compact('users' , 'tickets'));
 

@@ -27,3 +27,7 @@ Route::post('/', [TicketController::class , 'raiseTicket'])->name('ticket.user')
 
 // Route::get('/admin', [AuthController::class , 'adminDash'])->middleware(['role:admin'])->name('account.admin');
 Route::get('/admin', [AdminController::class , 'showUsers'])->middleware(['role:admin'])->name('account.admin');
+// Route::get('/admin', [AdminController::class , 'showUsers'])->middleware(['role:admin'])->name('account.admin');
+
+Route::post('/admin/{id}/message', [TicketController::class, 'sendMessage'])->name('ticket.message');
+Route::post('/admin/{id}/status',  [TicketController::class, 'updateStatus'])->name('ticket.status');
