@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Ticket;
+use App\Models\TicketMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -76,7 +77,7 @@ class AuthController extends Controller
     public function userDash(){
 
         $users = auth()->user();
-        $tickets = Ticket::where('user_id' , auth()->id())->get();
+        $tickets = Ticket::with('user' , 'messages.user')->where('user_id' , auth()->id())->latest()->get();
 
         return view('layouts.index' , compact('users' , 'tickets'));
 

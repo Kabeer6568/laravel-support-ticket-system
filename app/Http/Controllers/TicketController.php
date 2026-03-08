@@ -60,15 +60,17 @@ class TicketController extends Controller
     ]);
 
     return redirect()->back()->with('success', 'Message Sent');
-}
+    }
 
-public function updateStatus(Request $request, $id){
-    $request->validate([
-        'status' => 'required|in:pending,open,resolved,closed',
-    ]);
+    public function updateStatus(Request $request, $id){
+        $request->validate([
+            'status' => 'required|in:pending,open,resolved,closed',
+        ]);
 
-    Ticket::findOrFail($id)->update(['status' => $request->status]);
-    return redirect()->back()->with('success', 'Status Updated');
-}
+        Ticket::findOrFail($id)->update(['status' => $request->status]);
+        return redirect()->back()->with('success', 'Status Updated');
+    }
+
+    
     
 }

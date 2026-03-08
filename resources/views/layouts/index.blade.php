@@ -118,89 +118,6 @@
 								</li>
 								
 								@endforeach
-
-								
-								<li class="list-group-item" data-toggle="modal" data-target="#issue">
-									<div class="media">
-										<i class="fa fa-file-o pull-left"></i>
-										<div class="media-body">
-											<strong>Document that Helvetica Neue can cause problems on Windows</strong> <span class="label label-success">SUCCESS</span><span class="number pull-right"># 13697</span>
-											<p class="info">Opened by <a href="#">lgardner</a> 12 hours ago <i class="fa fa-comments"></i> <a href="#">7 comments</a></p>
-										</div>
-									</div>
-								</li>
-								<li class="list-group-item" data-toggle="modal" data-target="#issue">
-									<div class="media">
-										<i class="fa fa-code-fork pull-left"></i>
-										<div class="media-body">
-											<strong>Manually triggering dropdown not working</strong> <span class="label label-primary">NOT IMPORTANT</span><span class="number pull-right"># 13695</span>
-											<p class="info">Opened by <a href="#">ehernandez</a> 19 hours ago <i class="fa fa-comments"></i> <a href="#">14 comments</a></p>
-										</div>
-									</div>
-								</li>
-								<li class="list-group-item" data-toggle="modal" data-target="#issue">
-									<div class="media">
-										<i class="fa fa-code pull-left"></i>
-										<div class="media-body">
-											<strong>Add classes for respective directions to affix</strong> <span class="label label-primary">NOT IMPORTANT</span><span class="number pull-right"># 13691</span>
-											<p class="info">Opened by <a href="#">tmckenzie</a> 1 day ago <i class="fa fa-comments"></i> <a href="#">20 comments</a></p>
-										</div>
-									</div>
-								</li>
-								<li class="list-group-item" data-toggle="modal" data-target="#issue">
-									<div class="media">
-										<i class="fa fa-code pull-left"></i>
-										<div class="media-body">
-											<strong>Responsive tables of the horizontal scroll bar</strong> <span class="label label-danger">IMPORTANT</span><span class="number pull-right"># 13680</span>
-											<p class="info">Opened by <a href="#">tmckenzie</a> 2 days ago <i class="fa fa-comments"></i> <a href="#">5 comments</a></p>
-										</div>
-									</div>
-								</li>
-								<li class="list-group-item" data-toggle="modal" data-target="#issue">
-									<div class="media">
-										<i class="fa fa-cog pull-left"></i>
-										<div class="media-body">
-											<strong>Make autoprefixer browsers fixed</strong> <span class="label label-warning">URGENT</span><span class="number pull-right"># 13679</span>
-											<p class="info">Opened by <a href="#">lgardner</a> 2 days ago <i class="fa fa-comments"></i> <a href="#">29 comments</a></p>
-										</div>
-									</div>
-								</li>
-								<li class="list-group-item" data-toggle="modal" data-target="#issue">
-									<div class="media">
-										<i class="fa fa-code pull-left"></i>
-										<div class="media-body">
-											<strong>Popover doesn't move when tied element moves</strong> <span class="label label-primary">NOT IMPORTANT</span><span class="number pull-right"># 13678</span>
-											<p class="info">Opened by <a href="#">lgardner</a> 3 days ago <i class="fa fa-comments"></i> <a href="#">21 comments</a></p>
-										</div>
-									</div>
-								</li>
-								<li class="list-group-item" data-toggle="modal" data-target="#issue">
-									<div class="media">
-										<i class="fa fa-file-o pull-left"></i>
-										<div class="media-body">
-											<strong>Glyphicon chevron left/right vertical alignment</strong> <span class="label label-info">INFO</span><span class="number pull-right"># 13658</span>
-											<p class="info">Opened by <a href="#">lgardner</a> 5 days ago <i class="fa fa-comments"></i> <a href="#">9 comments</a></p>
-										</div>
-									</div>
-								</li>
-								<li class="list-group-item" data-toggle="modal" data-target="#issue">
-									<div class="media">
-										<i class="fa fa-file-o pull-left"></i>
-										<div class="media-body">
-											<strong>Horizontal to vertical navbar/offcanvas</strong> <span class="label label-primary">NOT IMPORTANT</span><span class="number pull-right"># 13630</span>
-											<p class="info">Opened by <a href="#">tmckenzie</a> 5 days ago <i class="fa fa-comments"></i> <a href="#">10 comments</a></p>
-										</div>
-									</div>
-								</li>
-								<li class="list-group-item" data-toggle="modal" data-target="#issue">
-									<div class="media">
-										<i class="fa fa-code pull-left"></i>
-										<div class="media-body">
-											<strong>Changing container padding</strong> <span class="label label-danger">IMPORTANT</span><span class="number pull-right"># 13627</span>
-											<p class="info">Opened by <a href="#">ehernandez</a> 1 week ago <i class="fa fa-comments"></i> <a href="#">82 comments</a></p>
-										</div>
-									</div>
-								</li>
 							</ul>
 							
 							<!-- BEGIN DETAIL TICKET -->
@@ -213,32 +130,51 @@
 												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 												<h4 class="modal-title"><i class="fa fa-cog"></i> Add drag and drop config import closes</h4>
 											</div>
-											<form action="#" method="post">
+											
 												<div class="modal-body">
 													<div class="row">
 														<div class="col-md-2">
 															<img src="assets/img/user/avatar01.png" class="img-circle" alt="" width="50">
 														</div>
 														<div class="col-md-10">
-															<p>Issue <strong>#13698</strong> opened by <a href="#">jqilliams</a> 5 hours ago</p>
+															<p>Issue <strong>#13698</strong> opened by <a href="#">{{ $ticket ->user->name }}</a> {{ $ticket ->created_at->diffForHumans() }}</p>
 															<p>{{ $ticket -> description }}</p>
 														</div>
 													</div>
+
+													@foreach($ticket->messages as $message)
 													<div class="row support-content-comment">
 														<div class="col-md-2">
 															<img src="assets/img/user/avatar02.png" class="img-circle" alt="" width="50">
 														</div>
 														<div class="col-md-10">
-															<p>Posted by <a href="#">ehernandez</a> on 16/06/2014 at 14:12</p>
-															<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+															<p>Posted by <a href="#">{{ $message->user->name }}</a> on {{ $message->created_at->diffForHumans() }}</p>
+															<p>{{ $message->message }}</p>
 															<a href="#"><span class="fa fa-reply"></span> &nbsp;Post a reply</a>
 														</div>
 													</div>
+													@endforeach
+
+													{{-- Reply box --}}
+                    @if($ticket->status !== 'closed')
+                    <hr>
+                    <form action="{{ route('ticket.message', $ticket->id) }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <textarea name="message" class="form-control" rows="3" placeholder="Type your reply..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-reply"></i> Send Reply
+                        </button>
+                    </form>
+                    @else
+                    <p class="text-muted text-center"><i class="fa fa-lock"></i> This ticket is closed.</p>
+                    @endif
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
 												</div>
-											</form>
+											
 										</div>
 									</div>
 								</div>
