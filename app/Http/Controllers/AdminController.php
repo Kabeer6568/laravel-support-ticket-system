@@ -12,9 +12,11 @@ class AdminController extends Controller
 
     $users = User::all();
     $tickets = Ticket::with('user' , 'messages.user')->latest()->get();
-    // $messages = Ticket::with('message.user' , 'user')->findOrFail($id);
+    $ticketsQty = Ticket::count();
+    $closedTicketsQty = Ticket::whereIn('status' , ['closed' , 'resolved'])->count();
+    $activeTicketsQty = Ticket::whereIn('status' , ['open' , 'pending'])->count();
 
-    return view('layouts.admin.index' , compact('users' , 'tickets'));
+    return view('layouts.admin.index' , compact('users' , 'tickets' , 'ticketsQty' , 'closedTicketsQty' , 'activeTicketsQty'));
 
     }
 }

@@ -66,8 +66,9 @@
                         <hr>
                         
                         <ul>
-                            <li><a href="#">Your Tickets<span class="pull-right">52</span></a></li>
-                            <li><a href="#">Mentioning you<span class="pull-right">18</span></a></li>
+                            <li><a href="#">All Tickets<span class="pull-right">{{ $ticketsQty }}</span></a></li>
+                            <li><a href="#">Active Tickets<span class="pull-right">{{ $activeTicketsQty }}</span></a></li>
+                            <li><a href="#">Closed Tickets<span class="pull-right">{{ $closedTicketsQty }}</span></a></li>
                         </ul>
                         
                         <hr>
@@ -169,42 +170,7 @@
 								</li>
 								
 								@endforeach
-                                    <li class="list-group-item" data-toggle="modal" data-target="#issue">
-                                        <div class="media">
-                                            <i class="fa fa-file-o pull-left"></i>
-                                            <div class="media-body">
-                                                <strong>Document that Helvetica Neue can cause problems on Windows</strong> <span class="label label-success">SUCCESS</span><span class="number pull-right"># 13697</span>
-                                                <p class="info">Opened by <a href="#">lgardner</a> 12 hours ago <i class="fa fa-comments"></i> <a href="#">7 comments</a></p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item" data-toggle="modal" data-target="#issue">
-                                        <div class="media">
-                                            <i class="fa fa-code-fork pull-left"></i>
-                                            <div class="media-body">
-                                                <strong>Manually triggering dropdown not working</strong> <span class="label label-primary">NOT IMPORTANT</span><span class="number pull-right"># 13695</span>
-                                                <p class="info">Opened by <a href="#">ehernandez</a> 19 hours ago <i class="fa fa-comments"></i> <a href="#">14 comments</a></p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item" data-toggle="modal" data-target="#issue">
-                                        <div class="media">
-                                            <i class="fa fa-code pull-left"></i>
-                                            <div class="media-body">
-                                                <strong>Add classes for respective directions to affix</strong> <span class="label label-primary">NOT IMPORTANT</span><span class="number pull-right"># 13691</span>
-                                                <p class="info">Opened by <a href="#">tmckenzie</a> 1 day ago <i class="fa fa-comments"></i> <a href="#">20 comments</a></p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item" data-toggle="modal" data-target="#issue">
-                                        <div class="media">
-                                            <i class="fa fa-code pull-left"></i>
-                                            <div class="media-body">
-                                                <strong>Responsive tables of the horizontal scroll bar</strong> <span class="label label-danger">IMPORTANT</span><span class="number pull-right"># 13680</span>
-                                                <p class="info">Opened by <a href="#">tmckenzie</a> 2 days ago <i class="fa fa-comments"></i> <a href="#">5 comments</a></p>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    
                                 </ul>
                                 
                                 <!-- BEGIN DETAIL TICKET -->
@@ -224,7 +190,7 @@
 															<img src="assets/img/user/avatar01.png" class="img-circle" alt="" width="50">
 														</div>
 														<div class="col-md-10">
-															<p>Issue <strong>#13698</strong> opened by <a href="#">jqilliams</a> 5 hours ago</p>
+															<p>Issue <strong>#13698</strong> opened by <a href="#">{{ $ticket -> user->name }}</a> {{ $ticket ->created_at->diffForHumans() }}</p>
 															<p>{{ $ticket -> description }}</p>
 														</div>
 													</div>
