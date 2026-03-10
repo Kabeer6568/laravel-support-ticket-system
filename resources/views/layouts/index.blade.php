@@ -14,8 +14,8 @@
 					
 					<ul>
 						
-						<li><a href="#">Your Tickets<span class="pull-right">52</span></a></li>
-						<li><a href="#">Mentioning you<span class="pull-right">18</span></a></li>
+						<li><a href="#">Your Tickets<span class="pull-right">{{ $activeTicketsQty }}</span></a></li>
+						<li><a href="#">Closed Tickets<span class="pull-right">{{ $closedTicketsQty }}</span></a></li>
 					</ul>
 					
 					<hr>
@@ -44,8 +44,8 @@
 					 <hr>
 					 
 					 <div class="btn-group">
-						<button type="button" class="btn btn-default active">162 Open</button>
-						<button type="button" class="btn btn-default">95,721 Closed</button>
+						<button type="button" class="btn btn-default active">{{ $activeTicketsQty }} Open</button>
+						<button type="button" class="btn btn-default">{{ $closedTicketsQty }} Closed</button>
 					</div>
 					 
 					 <div class="btn-group">

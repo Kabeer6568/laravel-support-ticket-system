@@ -78,8 +78,14 @@ class AuthController extends Controller
 
         $users = auth()->user();
         $tickets = Ticket::with('user' , 'messages.user')->where('user_id' , auth()->id())->latest()->get();
+        $activeTicketsQty = $users->tickets()
+        ->whereIn('status', ['open', 'pending'])
+        ->count();
+        $closedTicketsQty = $users->tickets()
+        ->whereIn('status', ['closed', 'resolved'])
+        ->count();
 
-        return view('layouts.index' , compact('users' , 'tickets'));
+        return view('layouts.index' , compact('users' , 'tickets' , 'activeTicketsQty' , 'closedTicketsQty'));
 
     }
     
